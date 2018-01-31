@@ -30,6 +30,19 @@
 */
 
 //Code Here
+class Employee {
+  constructor(firstName, lastName, email, age) {
+    this.first_name = firstName,
+    this.last_name = lastName,
+    this.email = email,
+    this.age = age
+  }
+
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
+
 
 
 
@@ -50,6 +63,26 @@
 */
 
 //Code Here
+
+class Manager {
+  constructor(firstName, lastName, email, age, reports = []) {
+    this.first_name = firstName,
+    this.last_name = lastName,
+    this.email = email,
+    this.age = age,
+    this.reports = reports
+  }
+
+  hire(employee) {
+    this.reports.push(employee);
+  }
+
+  fire(index) {
+    // var employeeIndex = this.reports.indexOf(index);
+    return this.reports.splice(index , 1);
+  }
+
+}
 
 
 
