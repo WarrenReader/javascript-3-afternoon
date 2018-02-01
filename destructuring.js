@@ -98,16 +98,17 @@ function ingredients(obj) {
 */
 
 //Code Here
-
-var largeNumbers = (dObj) => {
+function largeNumbers({first, second, third}) {
   if (first < second) {
-    if (first < third){
+    if (first < third) {
       return first;
-    } else if (third < second) {
-      return third;
     } else {
-      return second;
+      return third;
     }
+  } else if (second < third) {
+    return second;
+  } else {
+    return third;
   }
 }
 
@@ -122,5 +123,16 @@ var largeNumbers = (dObj) => {
 */
 
 //Code Here
-
-
+function numberGroups({a, b, c}) {
+  if (a.length > b.length) {
+    if (a.length > c.length) {
+      return a;
+    } else {
+      return c;
+    }
+  } else if (b.length > c.length) {
+    return b;
+  } else {
+  return c;
+  }
+}
