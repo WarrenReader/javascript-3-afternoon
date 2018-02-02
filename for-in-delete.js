@@ -78,7 +78,12 @@ function greaterThan10(obj) {
 */
 
 //Code Here
-
+function double(obj) {
+  for (var key in obj) {
+    obj[key] *= 2;
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -92,7 +97,15 @@ function greaterThan10(obj) {
 */
 
 //Code Here
-
+function secrets(obj) {
+  var str = "";
+  for (var key in obj) {
+    if((key[0] + key[1]) === "sh"){
+      str += obj[key];
+    }
+  }
+  return str;
+}
 
 
 /* 
@@ -108,7 +121,7 @@ function greaterThan10(obj) {
 // }
 
 // for(var key in deleteAllThethings) {
-//   delete deleteAllThethings[key]
+//   delete deleteAllThethings[key];
 // }
 
 // console.log(deleteAllThethings)
@@ -123,7 +136,10 @@ function greaterThan10(obj) {
 */
 
 //Code Here
-
+function removePassword(obj) {
+  delete obj.password;
+  return obj;
+}
 
 
 ////////// PROBLEM 6 //////////
@@ -142,7 +158,11 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
+for (var key in deleteTheBigNumbers) {
+  if (deleteTheBigNumbers[key] > 100) {
+    delete deleteTheBigNumbers[key];
+  }
+}
 
 
 ////////// PROBLEM 7 //////////
@@ -155,6 +175,15 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
+function startsWithK(obj) {
+  for (var key in obj) {
+    if (key[0] === "k") {
+      console.log("works");
+      delete obj[key];
+    }
+  }
+  return obj;
+}
 
 
 
@@ -170,5 +199,12 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
+function hiddenTreasure(obj) {
+  for (var key in obj) {
+    if (obj[key].indexOf('treasure') === -1) {
+      delete obj[key];
+    }
+  }
+  return obj;
+}
 

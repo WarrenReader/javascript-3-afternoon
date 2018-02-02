@@ -39,7 +39,7 @@ class Employee {
   }
 
   makeWidget() {
-    return `${this.first_name} ${this.last_name} Widget`
+    return `${this.first_name} ${this.last_name} Widget`;
   }
 }
 
@@ -64,12 +64,9 @@ class Employee {
 
 //Code Here
 
-class Manager {
+class Manager extends Employee {
   constructor(firstName, lastName, email, age, reports = []) {
-    this.first_name = firstName,
-    this.last_name = lastName,
-    this.email = email,
-    this.age = age,
+    super(firstName, lastName, email, age);
     this.reports = reports
   }
 
@@ -78,7 +75,6 @@ class Manager {
   }
 
   fire(index) {
-    // var employeeIndex = this.reports.indexOf(index);
     return this.reports.splice(index , 1);
   }
 
@@ -110,6 +106,36 @@ class Manager {
 
 //Code Here
 
+class ProgressiveManager extends Manager {
+  constructor(firstName, lastName, email, age, reports = [], title = 'Not a manager', bonus = 0) {
+    super(firstName, lastName, email, age, reports = []);
+    this.title = title,
+    this.bonus = bonus
+  }
+
+  hire(employee) {
+    this.reports.push(employee);
+    if(this.reports.length === 0){
+      return this.title = "Not a manager";
+    } else if (this.reports.length < 4) {
+      return this.title = "Barely Manager";
+    } else if (this.reports.length < 11) {
+      return this.title = "Mostly Manager";
+    } else if (this.reports.length < 51) {
+      return this.title = "Manager";
+    } else if (this.reports.length < 101) {
+      return this.title = "Manager Plus";
+    } else if (this.reports.length > 100) {
+      return this.title = "Bestest Manager";
+    }
+  }
+
+  fire(index) {
+    this.bonus += 100;
+    return this.reports.splice(index , 1);
+  }
+
+}
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
@@ -137,4 +163,30 @@ class Manager {
 
 //Code Here
 
+class Machine {
+  constructor() {
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+
+  makeWidgets(num) {
+    this.widgets_made_count += num;
+    var wear = Math.floor(num / 50);
+    this.wear_and_tear_count += wear;
+  }
+
+  fixMachine() {
+    this.needs_reboot = true;
+  }
+
+  reboot() {
+    return () => {
+      console.log("works");
+      this.needs_reboot = false;
+      this.wear_and_tear_count -= 10;
+    }
+  }
+
+}
 
